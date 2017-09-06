@@ -5,7 +5,7 @@
 
 <img src="https://instagram.fcgh17-1.fna.fbcdn.net/t51.2885-15/e35/20634990_873257262825363_1217701766187974656_n.jpg" width="600" alt="(original: https://www.instagram.com/p/BXixfLYFsBP/)">
 
-<img src="https://i.imgur.com/CuoVrRn.png" width="800" alt="Vassus render">
+<img src="https://i.imgur.com/CuoVrRn.png" alt="Vassus render">
 
 ## how to use
 
