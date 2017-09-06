@@ -35,6 +35,7 @@ def printImage(imagePath,fit=True):
 				rr,gg,bb = im.getpixel((x,y+1))
 			except:
 				rr,gg,bb = (0,0,0)
+			#TODO render transparency
 			print("\033[48;2;{rb};{gb};{bb}m\033[38;2;{rf};{gf};{bf}m{px}".format(rb=r,gb=g,bb=b,rf=rr,gf=gg,bf=bb,px=px),end='')
 		print("\033[0m ")
 
