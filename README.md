@@ -1,37 +1,28 @@
-## Welcome to GitHub Pages
+# Vassus
+(Vassus means Employee in latin)
 
-You can use the [editor on GitHub](https://github.com/lsabiao/vassus/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Render images in your terminal.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+<img src="https://instagram.fcgh17-1.fna.fbcdn.net/t51.2885-15/e35/20634990_873257262825363_1217701766187974656_n.jpg" width="600" alt="(original: https://www.instagram.com/p/BXixfLYFsBP/)">
 
-### Markdown
+<img src="https://i.imgur.com/CuoVrRn.png" alt="Vassus render">
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## how to use
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```shell
+python vassus.py path/to/img
+```
+### eg:
+```shell
+python vassus.py https://i.imgur.com/CuoVrRn.png
+```
+or
+```shell
+python vassus.py example.jpg
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Dependencies:
+[Pillow](https://python-pillow.org/)
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/lsabiao/vassus/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+![wtfpl](http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-1.png)
