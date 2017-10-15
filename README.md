@@ -5,7 +5,7 @@
 
 <img src="https://i.imgur.com/TKro10h.jpg" width="600" alt="">
 
-<img src="https://i.imgur.com/lFXD9rF.jpg" alt="Vassus render">
+<img src="https://i.imgur.com/NbriMtd.png" alt="Vassus render">
 
 ## how to use
 
