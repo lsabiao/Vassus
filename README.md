@@ -3,9 +3,9 @@
 
 ## Render images in your terminal.
 
-<img src="https://instagram.fcgh17-1.fna.fbcdn.net/t51.2885-15/e35/20634990_873257262825363_1217701766187974656_n.jpg" width="600" alt="">
+<img src="https://i.imgur.com/TKro10h.jpg" width="600" alt="">
 
-<img src="https://i.imgur.com/CuoVrRn.png" alt="Vassus render">
+<img src="https://i.imgur.com/lFXD9rF.jpg" alt="Vassus render">
 
 ## how to use
 
@@ -14,7 +14,7 @@ python vassus.py path/to/img
 ```
 ### eg:
 ```shell
-python vassus.py https://i.imgur.com/CuoVrRn.png
+python vassus.py https://imgur.com/TKro10h
 ```
 or
 ```shell
