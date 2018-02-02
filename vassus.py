@@ -66,13 +66,22 @@ def prepareImage(path):
 	
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument("image",help="The image to render")
+	parser.add_argument("image",nargs='*',help="The image to render")
 	parser.add_argument("--no-resize",help="keep the size of the image",action="store_false")
 	args = parser.parse_args()
+        
+        imagelen = len(args.image)
 
-	
+        if(imagelen > 1):
+            space_between = 4
+        else:
+            space_between = 0
 
-	printImage(args.image,args.no_resize)
+        for i in range(imagelen):
+	    printImage(args.image[i],args.no_resize)
+            if(i < imagelen-1):
+                print("\n"*space_between)
 
 
+        #TODO create the thumbnails
 
