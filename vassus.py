@@ -24,7 +24,10 @@ def printImage(imagePath,fit=True):
 	terY = int(terY)
 	terX-=1
 	terY=terY*2
-	im = prepareImage(imagePath).convert("RGB")
+	try:
+		im = prepareImage(imagePath).convert("RGB")
+	except:
+		return
 
 
 	if(fit):
@@ -41,7 +44,6 @@ def printImage(imagePath,fit=True):
 			buffer+= "\033[48;2;{rb};{gb};{bb}m\033[38;2;{rf};{gf};{bf}m{px}".format(rb=r,gb=g,bb=b,rf=rr,gf=gg,bf=bb,px=px)
 		
 		print(center_image(buffer,im.size[0],terX),end="")
-		#print(buffer,end="")
 		print("\033[0m ")
 
 
@@ -52,11 +54,12 @@ def prepareImage(path):
 		if(path.startswith(p)):
 			local = False
 	if(local):
+		if(os.path.isdir(os.path.realpath(path))):
+			return False
 		try:
 			im = Image.open(os.path.realpath(path))
 		except:
-			print("Image cannot be loaded")
-			sys.exit(1)
+			return False
 	else:
 		try:
 			downloaded = urlopen(path)
@@ -64,8 +67,8 @@ def prepareImage(path):
 			pre.write(downloaded.read())
 			im = Image.open(pre)
 		except:
-			print("Image cannot be loaded")
-			sys.exit(1)
+			return False
+	print(f"\033[1m{path.center(terWidth)}\033[0m")
 	return im
 
 
@@ -87,7 +90,7 @@ if __name__ == "__main__":
 	args = parser.parse_args()
 
 	terY,terX = os.popen('stty size','r').read().split()
-	terX = int(terX)
+	terWidth = int(terX)
 		
 	imagelen = len(args.image)
 		
@@ -98,9 +101,11 @@ if __name__ == "__main__":
 	
 	index = 0
 	for img in args.image:
+
 		print("\n"*space_between)
-		print(f"\033[1m{img.center(terX)}\033[0m")
+		#print(f"\033[1m{img.center(terX)}\033[0m")
 		printImage(args.image[index],args.no_resize)
+
 
 		index+=1
 
