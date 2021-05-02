@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from __future__ import print_function
 from PIL import Image
@@ -30,14 +30,18 @@ def printImage(imagePath,fit=True):
 	if(fit):
 		im.thumbnail((terX,terY))
 	for y in range(0,im.size[1],2):
+		buffer = ""
 		for x in range(im.size[0]):
 			r,g,b = im.getpixel((x,y))
 			try:
 				rr,gg,bb = im.getpixel((x,y+1))
 			except:
 				rr,gg,bb = (0,0,0)
-			#TODO render transparency
-			print("\033[48;2;{rb};{gb};{bb}m\033[38;2;{rf};{gf};{bf}m{px}".format(rb=r,gb=g,bb=b,rf=rr,gf=gg,bf=bb,px=px),end='')
+			
+			buffer+= "\033[48;2;{rb};{gb};{bb}m\033[38;2;{rf};{gf};{bf}m{px}".format(rb=r,gb=g,bb=b,rf=rr,gf=gg,bf=bb,px=px)
+		
+		print(center_image(buffer,im.size[0],terX),end="")
+		#print(buffer,end="")
 		print("\033[0m ")
 
 
@@ -63,25 +67,43 @@ def prepareImage(path):
 			print("Image cannot be loaded")
 			sys.exit(1)
 	return im
+
+
+def center_image(to_center,img_width,terminal_width):
+	if(img_width >= terminal_width):
+		return to_center
 	
+	offset = (terminal_width - img_width)//2
+	return f"{' '*offset}{to_center}\033[0m{' '*offset}"
+
+
+
+
+
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument("image",nargs='*',help="The image to render")
 	parser.add_argument("--no-resize",help="keep the size of the image",action="store_false")
 	args = parser.parse_args()
-        
-        imagelen = len(args.image)
 
-        if(imagelen > 1):
-            space_between = 4
-        else:
-            space_between = 0
+	terY,terX = os.popen('stty size','r').read().split()
+	terX = int(terX)
+		
+	imagelen = len(args.image)
+		
+	if(imagelen > 1):
+		space_between = 2
+	else:
+		space_between = 0
+	
+	index = 0
+	for img in args.image:
+		print("\n"*space_between)
+		print(f"\033[1m{img.center(terX)}\033[0m")
+		printImage(args.image[index],args.no_resize)
 
-        for i in range(imagelen):
-	    printImage(args.image[i],args.no_resize)
-            if(i < imagelen-1):
-                print("\n"*space_between)
+		index+=1
 
 
-        #TODO create the thumbnails
+	#TODO create the thumbnails
 
